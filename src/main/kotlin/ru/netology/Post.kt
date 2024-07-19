@@ -1,6 +1,18 @@
 package ru.netology
 
-data class Post(val id: Int, val text: String, var likes: Likes = Likes(0))
+data class Post(
+    val id: Int,
+    val text: String,
+    var likes: Likes = Likes(0),
+    val ownerId: Int = 0,
+    val fromId: Int = 0,
+    val createdById: Int = 0,
+    val dateId: Int = 0,
+    val replyOwnerId: Int = 0,
+    val replyPostId: Int = 0,
+    val friendsOnly: Int = 0,
+
+    )
 
 object WallService {
     private var posts = emptyArray<Post>()
@@ -20,6 +32,11 @@ object WallService {
             }
         }
         return false
+    }
+
+    fun clear() {
+        posts = emptyArray()
+        lastId = 0
     }
 
     fun print() {
