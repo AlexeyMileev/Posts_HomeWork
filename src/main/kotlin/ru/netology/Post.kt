@@ -2,7 +2,7 @@ package ru.netology
 
 data class Post(
     val id: Int,
-    val text: String,
+    val text: String?,
     var likes: Likes = Likes(0),
     val ownerId: Int = 0,
     val fromId: Int = 0,
