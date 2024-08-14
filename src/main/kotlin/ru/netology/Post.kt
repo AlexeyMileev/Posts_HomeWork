@@ -11,6 +11,24 @@ data class Post(
     val replyOwnerId: Int = 0,
     val replyPostId: Int = 0,
     val friendsOnly: Int = 0,
+    val comments : Comments,
+    val copyright : Copyright,
+    val reposts : Reposts,
+    val views : Views,
+    val postType : String,
+    val postSource : PostSource?,
+    val attachments : Array<Attachment>? = emptyArray(),
+    val geo : Geo?,
+    val signerId : Long,
+    val copyHistory : Array<Post>? = emptyArray(),
+    val canPin : Boolean,
+    val canDelete : Boolean,
+    val canEdit : Boolean,
+    val isPinned : Boolean,
+    val markedAsAds : Boolean,
+    val isFavorite : Boolean,
+    val donut : Donut,
+    val postponedId : Long
 
     )
 
