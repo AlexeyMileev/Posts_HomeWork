@@ -35,6 +35,7 @@ data class Post(
 object WallService {
     private var posts = emptyArray<Post>()
     private var lastId = 0
+    var comments = emptyArray<Comment>()
 
 
     fun add(post: Post): Post {
@@ -63,5 +64,15 @@ object WallService {
             print(" ")
         }
         println()
+    }
+
+    fun createComment(comment: Comment) : Boolean {
+        for (post in posts) {
+            if (comment.postId == post.id) {
+                comments += comment
+                return true
+            }
+        }
+        throw PostNotFoundException ("Post not found")
     }
 }
