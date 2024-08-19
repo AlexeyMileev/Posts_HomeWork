@@ -612,4 +612,199 @@ class WallServiceTest {
         )
         assertTrue(postNew.id > 0)
     }
-}
+
+    @Test
+    fun createCommentExistsPost() {
+
+        val video1 = Video(
+            123,
+            12234,
+            "title video1",
+            "video dsc",
+            10,
+            null,
+            null,
+            232323,
+            33232323,
+            3,
+            34,
+            4,
+            "player1",
+            "platform",
+            true,
+            true,
+            "accessKey",
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            15,
+            30,
+            3242342,
+            true,
+            false,
+            true,
+            4,
+            "type",
+            34,
+            "Status",
+            true,
+            false,
+            10,
+            VideoLikes(10, true),
+            VideoReposts(45, 234234, 434, false)
+        )
+
+        val attachmentVideo1 = VideoAttachment(video1)
+
+        val post1 = Post(
+            151678,
+            "text_1",
+            Likes(155),
+            1738,
+            258,
+            1417,
+            1578374,
+            67648,
+            345,
+            15,
+            Comments(15, true, false, true, false),
+            Copyright(3843, "iewjfieij", "text", "type"),
+            Reposts(383, true),
+            Views(34),
+            "post",
+            null,
+            arrayOf(attachmentVideo1),
+            null,
+            121,
+            null,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            Donut(true, 234, "placeholder", true, "all"),
+            1221
+        )
+
+        WallService.add(post1)
+
+        val comment1 = Comment(
+            1,
+            1,
+            2223434,
+            324234234,
+            "text comment 1",
+            null,
+            arrayOf(attachmentVideo1),
+            null,
+            null
+        )
+        val result = WallService.createComment(comment1)
+
+        assertTrue(result)
+
+    }
+
+    @Test (expected = PostNotFoundException::class)
+    fun createCommentNotExistsPost() {
+
+        val video1 = Video(
+            123,
+            12234,
+            "title video1",
+            "video dsc",
+            10,
+            null,
+            null,
+            232323,
+            33232323,
+            3,
+            34,
+            4,
+            "player1",
+            "platform",
+            true,
+            true,
+            "accessKey",
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            15,
+            30,
+            3242342,
+            true,
+            false,
+            true,
+            4,
+            "type",
+            34,
+            "Status",
+            true,
+            false,
+            10,
+            VideoLikes(10,true),
+            VideoReposts(45,234234,434,false)
+        )
+
+        val attachmentVideo1 = VideoAttachment(video1)
+
+        val post1 = Post(
+            151678,
+            "text_1",
+            Likes(155),
+            1738,
+            258,
+            1417,
+            1578374,
+            67648,
+            345,
+            15,
+            Comments(15, true, false, true, false),
+            Copyright(3843, "iewjfieij", "text", "type"),
+            Reposts(383, true),
+            Views(34),
+            "post",
+            null,
+            arrayOf(attachmentVideo1),
+            null,
+            121,
+            null,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            Donut(true, 234, "placeholder", true, "all"),
+            1221
+        )
+        WallService.add(post1)
+        val comment1 = Comment(
+            1,
+            789,
+            2223434,
+            324234234,
+            "text comment 1",
+            null,
+            arrayOf(attachmentVideo1),
+            null,
+            null
+        )
+
+        WallService.createComment(comment1)
+    }
+
+    }
